@@ -57,23 +57,15 @@ class SignIn_Page extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                      const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 30,
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    'Sign In',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                _button(
+                  "Sign In",
+                  () {},
+                  Colors.transparent,
+                  Colors.indigo,
+                  Colors.black,
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: EdgeInsets.symmetric(vertical: 15),
                   child: Text(
                     "- Or -",
                     style: TextStyle(
@@ -83,39 +75,57 @@ class SignIn_Page extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateColor.resolveWith(
-                        (states) => Colors.transparent),
-                    shadowColor: MaterialStateColor.resolveWith(
-                        (states) => Colors.transparent),
-                    side: MaterialStateProperty.all(
-                      const BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                    ),
-                    padding: MaterialStateProperty.all(
-                      const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 30,
-                      ),
-                    ),
-                  ),
-                  child: const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
+                _button(
+                  "Sign Up",
+                  () {},
+                  Colors.white,
+                  Colors.transparent,
+                  Colors.white,
                 ),
                 const Spacer(flex: 2)
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _button(
+    String text,
+    Function onPressed,
+    Color borderColor,
+    Color backgroundColor,
+    Color textColor,
+  ) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        backgroundColor: MaterialStateColor.resolveWith(
+          (states) => backgroundColor,
+        ),
+        shadowColor: MaterialStateColor.resolveWith(
+          (states) => backgroundColor,
+        ),
+        side: MaterialStateProperty.all(
+          BorderSide(
+            color: borderColor,
+            width: 1,
+          ),
+        ),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 40,
+          ),
+        ),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 20,
+          color: textColor,
+        ),
       ),
     );
   }
